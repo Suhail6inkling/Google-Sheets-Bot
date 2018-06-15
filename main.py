@@ -1,5 +1,5 @@
 from __future__ import print_function
-from apiclient import discovery
+from apiclien.t.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 
@@ -10,7 +10,7 @@ creds = store.get()
 if not creds or creds.invalid:
     flow = client.flow_from_clientsecrets('client_secret.json', SCOPES)
     creds = tools.run_flow(flow, store)
-service = discovery.build('sheets', 'v4', http=creds.authorize(Http()))
+service = build('sheets', 'v4', http=creds.authorize(Http()))
 
 # Call the Sheets API
 SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
